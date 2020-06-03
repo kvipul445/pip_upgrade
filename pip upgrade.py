@@ -21,6 +21,7 @@ def get_package_name(r):
     return p[0]
 if len(outdated_packages) >= 3:
     del outdated_packages[0]
+    del outdated_packages[0]
 
     for i in range(len(outdated_packages)-1):
         package_name.append(get_package_name(outdated_packages[i]))
@@ -51,4 +52,3 @@ if no_of_broken_packages != 0:
     _output1 = run(["pip3","check"],stdout=PIPE).stdout.decode('utf-8')
     get_output(_output1)
 print("checking Complete")
-

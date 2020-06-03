@@ -1,5 +1,5 @@
 import pkg_resources
-from subprocess import call,check_output
+from subprocess import call,check_output,run,PIPE
 
 packages = [dist.project_name for dist in pkg_resources.working_set]
 #print(packages)
@@ -21,7 +21,6 @@ def get_package_name(r):
     return p[0]
 if len(outdated_packages) >= 3:
     del outdated_packages[0]
-    del outdated_packages[0]
 
     for i in range(len(outdated_packages)-1):
         package_name.append(get_package_name(outdated_packages[i]))
@@ -36,18 +35,20 @@ print("Checking for the requirements")
 print("Starting")
 no_of_broken_packages = call("pip3 check", shell=True)
 
-def get_output():
-    a = check_output(["pip3","check"])
-    output = a.decode("utf-8")
+def get_output(output):
     lines = output.split('\n')
     d = []
     for line in lines:
         c = line.split(' ')
         d.append(str(c[0]))
-        print(d)
-    call("pip3 install --upgrade " + ''.join(d),shell=True)
+    len_output = len(d)
+    del d[len_output -1]
+    print("Broken packages")
+    print(d)
+    call("pip3 install --upgrade " + ' '.join(d),shell=True)
         
 if no_of_broken_packages != 0:
-    get_output()
+    _output1 = run(["pip3","check"],stdout=PIPE).stdout.decode('utf-8')
+    get_output(_output1)
 print("checking Complete")
 

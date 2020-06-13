@@ -11,7 +11,6 @@ print("Getting the list of outdated packages.")
 
 _a = check_output(["pip3","list","--outdated"])
 _output = _a.decode("utf-8")
-print('_output')
 print(_output)
 outdated_packages = _output.split('\n')
 package_name = []

@@ -3,6 +3,9 @@
 Requirements
 - Have Python preinstalled
 
+```Python Requirement Preinstalled```
+- Numpy
+
 It will upgrade the python packages as well as check the broken requirements.
 
 To run use the command 

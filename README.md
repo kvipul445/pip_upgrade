@@ -1,4 +1,8 @@
 # pip_upgrade
+
+Requirements
+- Have Python preinstalled
+
 It will upgrade the python packages as well as check the broken requirements.
 
 To run use the command 

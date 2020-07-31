@@ -31,14 +31,14 @@ if len(outdated_packages) >= 3:
 print("Getting list complete\n Now upgrading packages.")
 
 #Upgrading all the outdated packages
-call("pip3 install --upgrade " + ' '.join(package_name), shell=True)
+call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(package_name), shell=True)
 
 print("Upgrading Packages are complete.")
 
 print("Checking for each package upgrade.")
 
 #Checking and Upgrading individual packages
-call("pip3 install --upgrade " + ' '.join(packages),shell=True)
+call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(packages),shell=True)
 
 print("Checking for each package upgrade complete.")
 
@@ -67,7 +67,7 @@ def get_output(output):
     print("Broken packages")
     print(broken_package_unique)
 
-    call("pip3 install --upgrade " + ' '.join(broken_package_unique),shell=True)
+    call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(broken_package_unique),shell=True)
         
 while( no_of_broken_packages != 0 ):
     _output1 = run(["pip3","check"],stdout=PIPE).stdout.decode('utf-8')

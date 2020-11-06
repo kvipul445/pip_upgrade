@@ -28,6 +28,10 @@ if len(outdated_packages) >= 3:
     for i in range(len(outdated_packages)-1):
         package_name.append(get_package_name(outdated_packages[i]))
 
+    del package_name[package_name.index('distro-info')]
+    del package_name[package_name.index('tf-nightly')]
+    
+
 print("Getting list complete\n Now upgrading packages.")
 
 #Upgrading all the outdated packages
@@ -36,6 +40,8 @@ call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(package_na
 print("Upgrading Packages are complete.")
 
 print("Checking for each package upgrade.")
+
+del packages[packages.index('tf-nightly')]
 
 #Checking and Upgrading individual packages
 call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(packages),shell=True)

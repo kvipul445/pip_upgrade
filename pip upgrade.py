@@ -29,7 +29,8 @@ if len(outdated_packages) >= 3:
         package_name.append(get_package_name(outdated_packages[i]))
 
     del package_name[package_name.index('distro-info')]
-    del package_name[package_name.index('tf-nightly')]
+    if 'tf-nightly' in package_name:
+        del package_name[package_name.index('tf-nightly')]
     
 
 print("Getting list complete\n Now upgrading packages.")

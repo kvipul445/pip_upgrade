@@ -47,6 +47,8 @@ del packages[packages.index('tf-nightly')]
 #Checking and Upgrading individual packages
 call("pip3 install --upgrade --use-feature=2020-resolver " + ' '.join(packages),shell=True)
 
+call("pip3 install tf-nightly --upgrade --use-feature=2020-resolver", shell=True)
+
 print("Checking for each package upgrade complete.")
 
 print("Checking for the requirements")
